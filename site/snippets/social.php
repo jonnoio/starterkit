@@ -12,13 +12,10 @@
 */
 ?>
 <span class="social">
-  <a href="https://twitter.com/getkirby">
+  <a href="https://twitter.com/jonno">
     <?= svg('assets/icons/twitter.svg') ?>
   </a>
-  <a href="https://chat.getkirby.com">
-    <?= svg('assets/icons/discord.svg') ?>
-  </a>
-  <a href="https://instagram.com/getkirby">
+  <a href="https://instagram.com/jonnoio">
     <?= svg('assets/icons/instagram.svg') ?>
   </a>
 </span>
