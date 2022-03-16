@@ -9,4 +9,8 @@
  */
 return [
     'debug' => true,
+    'url' => 'https://joncollins.me',
+    'panel' =>[
+        'install' => true
+      ]
 ];
