@@ -7,6 +7,10 @@
 
   More about snippets:
   https://getkirby.com/docs/guide/templates/snippets
+
+Jon Line was:
+      <?= $note->text()->toBlocks()->excerpt(400) ?>
+
 */
 ?>
 <article class="note-excerpt">
@@ -23,7 +27,7 @@
     </header>
     <?php if (($excerpt ?? true) !== false): ?>
     <div class="note-excerpt-text">
-      <?= $note->text()->toBlocks()->excerpt(280) ?>
+      <?= $note->intro()->toBlocks()->excerpt(400, FALSE) ?>
     </div>
     <?php endif ?>
   </a>
