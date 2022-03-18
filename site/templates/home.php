@@ -27,34 +27,49 @@
     we call a method like `children()` in this case
   */
   ?>
-  <?php if ($photographyPage = page('pictures')): ?>
-  <ul class="home-grid">
-    <?php foreach ($photographyPage->children()->listed() as $album): ?>
-    <li>
-      <a href="<?= $album->url() ?>">
-        <figure>
-          <?php
-          /*
-            The `cover()` method defined in the `album.php`
-            page model can be used everywhere across the site
-            for this type of page
 
-            We can automatically resize images to a useful
-            size with Kirby's built-in image manipulation API
-          */
-          ?>
-          <?php if ($cover = $album->cover()): ?>
-          <?= $cover->resize(1024, 1024) ?>
-          <?php endif ?>
-          <figcaption>
-            <span>
-              <span class="example-name"><?= $album->title()->html() ?></span>
-            </span>
-          </figcaption>
-        </figure>
-      </a>
-    </li>
-    <?php endforeach ?>
-  </ul>
+  <?php if ($notesPage = page('notes')): ?>
+  <header class="h2">
+  <h2><a href="https://joncollins.me/notes">Words</a></h2>
+  </header>
+
+<ul class="grid">
+  <?php foreach ($notesPage->children()->sortBy('date', 'desc') as $note): ?>
+  <? $notescnt++; if ($notescnt <= 3 ): ?>
+  <li class="column" style="--columns: 4">
+      <?php snippet('note', ['note' => $note]) ?>
+  </li>
   <?php endif ?>
+
+  <?php endforeach ?>
+</ul>
+  <?php endif ?>
+
+  <?php if ($photographyPage = page('pictures')): ?>
+  <header class="h2">
+  <h2><a href="https://joncollins.me/pictures">Pictures</a></h2>
+  </header>
+
+<ul class="grid" style="--gutter: 1.5rem">
+  <?php foreach ($photographyPage->children()->listed() as $project): ?>
+  <? $piccnt++; if ($piccnt <= 4 ): ?>
+  <li class="column" style="--columns: 3">
+    <a href="<?= $project->url() ?>">
+      <figure>
+        <span class="img" style="--w:4;--h:5">
+          <?= ($cover = $project->cover()) ? $cover->crop(400, 500) : null ?>
+        </span>
+        <figcaption class="img-caption">
+          <?= $project->title()->html() ?>
+        </figcaption>
+      </figure>
+    </a>
+  </li>
+  <?php endif ?>
+  <?php endforeach ?>
+</ul>
+
+  <?php endif ?>
+
+
 <?php snippet('footer') ?>
