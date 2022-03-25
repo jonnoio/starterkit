@@ -30,7 +30,10 @@
 
   <?php if ($notesPage = page('notes')): ?>
   <header class="h2">
-  <h2><a href="https://joncollins.me/notes">Words</a></h2>
+  <h2><a href="
+	<?= $notesPage->url() ?> ">
+	<?= $notesPage->title()->html() ?> 
+  </a></h2>
   </header>
 
 <ul class="grid">
@@ -47,7 +50,10 @@
 
   <?php if ($photographyPage = page('pictures')): ?>
   <header class="h2">
-  <h2><a href="https://joncollins.me/pictures">Pictures</a></h2>
+  <h2><a href="
+	<?= $photographyPage->url() ?> ">
+	<?= $photographyPage->title()->html() ?> 
+  </a></h2>
   </header>
 
 <ul class="grid" style="--gutter: 1.5rem">
