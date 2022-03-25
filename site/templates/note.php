@@ -24,7 +24,7 @@
 <?php snippet('header') ?>
 
 <?php if ($cover = $page->cover()): ?>
-<a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:2; --h:1">
+<a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:6; --h:1">
   <?= $cover->crop(1200, 600) ?>
 </a>
 <?php endif ?>
