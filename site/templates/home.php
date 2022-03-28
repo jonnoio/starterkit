@@ -19,7 +19,7 @@
 */
 ?>
 <?php snippet('header') ?>
-  <?php snippet('intro') ?>
+  <?php /* snippet('intro') */ ?>
   <?php
   /*
     We always use an if-statement to check if a page exists to
@@ -34,6 +34,7 @@
 	<?= $notesPage->url() ?> ">
 	<?= $notesPage->title()->html() ?> 
   </a></h2>
+
   </header>
 
 <ul class="grid">
@@ -48,6 +49,9 @@
 </ul>
   <?php endif ?>
 
+<br>
+<br>
+
   <?php if ($photographyPage = page('pictures')): ?>
   <header class="h2">
   <h2><a href="
@@ -56,6 +60,7 @@
   </a></h2>
   </header>
 
+	
 <ul class="grid" style="--gutter: 1.5rem">
   <?php foreach ($photographyPage->children()->listed() as $project): ?>
   <? $piccnt++; if ($piccnt <= 4 ): ?>
@@ -72,6 +77,30 @@
     </a>
   </li>
   <?php endif ?>
+  <?php endforeach ?>
+</ul>
+
+  <?php endif ?>
+
+<br>
+<br>
+
+  <?php if ($thoughtsPage = page('thoughts')): ?>
+  <header class="h2">
+  <h2><a href="
+	<?= $thoughtsPage->url() ?> ">
+	<?= $thoughtsPage->title()->html() ?> 
+  </a></h2>
+  </header>
+
+<ul class="grid">
+  <?php foreach ($thoughtsPage->children()->sortBy('date', 'desc') as $note): ?>
+  <? $thoughtcnt++; if ($thoughtcnt <= 3 ): ?>
+  <li class="column" style="--columns: 4">
+      <?php snippet('thought', ['note' => $note]) ?>
+  </li>
+  <?php endif ?>
+
   <?php endforeach ?>
 </ul>
 
