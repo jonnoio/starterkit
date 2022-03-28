@@ -18,18 +18,25 @@
   More about templates: https://getkirby.com/docs/guide/templates/basics
 */
 ?>
+
 <?php snippet('header') ?>
+
 <article>
   <?php snippet('intro') ?>
   <div class="grid">
 
-    <div class="column" style="--columns: 4">
-      <div class="text">
-        <?= $page->text() ?>
+    <?php
+    /*
+      remove initial empty columns - 12 across in total
+      <div class="column" style="--columns: 2">
+        <div class="text">
+          <?= $page->text() ?>
+        </div>
       </div>
-    </div>
+    */
+    ?>
 
-    <div class="column" style="--columns: 8">
+    <div class="column" style="--columns: 12">
       <ul class="album-gallery">
         <?php foreach ($gallery as $image): ?>
         <li>
@@ -37,6 +44,7 @@
             <figure class="img" style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>">
               <?= $image->resize(800) ?>
             </figure>
+            <span class="img-caption"> <?= $image->caption() ?> </span>
           </a>
         </li>
         <?php endforeach ?>
@@ -44,4 +52,5 @@
     </div>
 
 </article>
+
 <?php snippet('footer') ?>
